@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time</title>
+    <style>
+	@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;700&display=swap");
+
+	* {
+		margin: 0;
+		padding: 0;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+
+	body {
+		background: url("https://i.hizliresim.com/rr46as2.jpg") no-repeat;
+		background-size: cover;
+		display: grid;
+		display: -ms-grid;
+		place-items: center;
+		height: 100vh;
+	}
+
+	.container {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-ms-flex-wrap: wrap;
+		flex-wrap: wrap;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+		font-family: 'Mulish', sans-serif;
+	}
+
+	.container div {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-flex: 1;
+		-ms-flex: 1;
+		flex: 1;
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		-ms-flex-direction: column;
+		flex-direction: column;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+		padding: 2rem;
+		color: #fff;
+	}
+
+	.container div .value {
+		font-size: 92px;
+		text-shadow: 4px 4px 11px #000;
+	}
+
+	.container div .text {
+		font-size: 38px;
+		text-shadow: 4px 4px 11px #000;
+	}
+	</style>
+</head>
+<body>
+    <div class="container">
+        <div class="day">
+            <span class="value">79</span>
+            <span class="text">Days</span>
+        </div>
+        <div class="hour">
+            <span class="value">12</span>
+            <span class="text">Hours</span>
+        </div>
+        <div class="minute">
+            <span class="value">42</span>
+            <span class="text">Minutes</span>
+        </div>
+        <div class="second">
+            <span class="value">25</span>
+            <span class="text">Seconds</span>
+        </div>
+    </div>
+    <script>
+	setInterval(() => {
+		const currentYear = new Date().getFullYear() + 1;
+		const newYear = new Date(currentYear, 0, 1, 0, 0, 0).getTime();
+		const now = new Date().getTime();
+		const calc = newYear - now;
+
+		const s = 1000;
+		const m = s * 60;
+		const h = m * 60;
+		const d = h * 24;
+
+		const day = Math.floor(calc / d);
+		const hour = Math.floor((calc % d) / h);
+		const minute = Math.floor((calc % h) / m);
+		const second = Math.floor((calc % m) / s);
+
+		document.querySelector(".day .value").innerHTML = day;
+		document.querySelector(".hour .value").innerHTML = hour;
+		document.querySelector(".minute .value").innerHTML = minute;
+		document.querySelector(".second .value").innerHTML = second;
+	}, 1000);
+	</script>
+</body>
+</html>
